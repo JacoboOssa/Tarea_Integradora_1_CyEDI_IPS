@@ -2,8 +2,6 @@ package model;
 
 
 import model.Implementations.*;
-
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -12,10 +10,11 @@ import java.util.regex.Pattern;
 public class IPS_Manager {
 
     private ChainHashTable<String,Patient> pacientes;
-
     private Section hematologySection;
     private Section generalPurposeSection;
     ArrayList<Patient> paciente = new ArrayList<>();
+
+    //String nameDataBase="Base de datos.txt";
 
     public IPS_Manager() {
         pacientes = new ChainHashTable<>(100);
@@ -24,6 +23,7 @@ public class IPS_Manager {
     }
 
     public void startSystem(){
+        //String routToDataBase = new File(nameDataBase).getAbsolutePath();
         File file = new File("Base de datos.txt");
         //System.out.println(file.exists());
         try {
