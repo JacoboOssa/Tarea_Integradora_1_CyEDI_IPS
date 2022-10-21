@@ -8,7 +8,7 @@ public class Heap<T> implements IPriorityQueue<T>{
         arr = new ArrayList<>();
         arr.add(null);
     }
-    public void addElement(int value, Object element) {
+    public void addElement(int value, T element) {
         arr.add(new Node(value,element));
         buildMaxHeapify();
     }
@@ -82,20 +82,16 @@ public class Heap<T> implements IPriorityQueue<T>{
     }
 
     @Override
-    public void increaseKey(T element, int newValue) {
+    public void increaseKey(T element, int newPriorityValue) {
         int index = -1;
         for (int i = 1; i < arr.size(); i++) {
-            if(arr.get(i).getElement().equals(element)) index = i;
+            if(arr.get(i).getElement().equals(element)){
+                index = i;
+            }
         }
-        if(newValue < arr.get(index).getValue()) {
-
-        }
-        while (index>1 && arr.get(index/2).getValue() <arr.get(index).getValue()){
-            Node<T> temp1 = arr.get(index/2);
-            Node<T> temp2 = arr.get(index);
-            arr.set(index, temp1);
-            arr.set(index/2, temp2);
-            index = index/2;
+        if(newPriorityValue > arr.get(index).getValue()) {
+            arr.get(index).setValue(arr.get(index).getValue()+newPriorityValue);
+            buildMaxHeapify();
         }
     }
 
@@ -113,7 +109,7 @@ public class Heap<T> implements IPriorityQueue<T>{
         return arr.get(1).getElement();
     }
 
-    public T getElement(int index) {
+    public T getElementA(int index) {
         return arr.get(index).getElement();
     }
 }

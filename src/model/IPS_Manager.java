@@ -2,6 +2,8 @@ package model;
 
 
 import model.Implementations.*;
+
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -10,11 +12,10 @@ import java.util.regex.Pattern;
 public class IPS_Manager {
 
     private ChainHashTable<String,Patient> pacientes;
+
     private Section hematologySection;
     private Section generalPurposeSection;
     ArrayList<Patient> paciente = new ArrayList<>();
-
-    //String nameDataBase="Base de datos.txt";
 
     public IPS_Manager() {
         pacientes = new ChainHashTable<>(100);
@@ -23,7 +24,6 @@ public class IPS_Manager {
     }
 
     public void startSystem(){
-        //String routToDataBase = new File(nameDataBase).getAbsolutePath();
         File file = new File("Base de datos.txt");
         //System.out.println(file.exists());
         try {
@@ -43,7 +43,7 @@ public class IPS_Manager {
 
             }
             fis.close();
-            System.out.println("Database loaded successfully");
+            System.out.println("Base de datos cargada exitosamente");
             //System.out.println("Tamano del arreglo: "+paciente.size());
 
 
@@ -129,10 +129,10 @@ public class IPS_Manager {
     public String undoHematology(int option2) {
 
         if(option2 == 1) {
-            return removeFromQueue(1) + "\n Undid successfully";
+            return removeFromQueue(1) + "\n Se deshizo correctamente";
         } else {
             addPatientToQueue(hematologySection.getLastExit().getId(),1);
-            return "Undid successfully";
+            return "Se deshizo correctamente";
         }
 
     }
@@ -140,10 +140,10 @@ public class IPS_Manager {
     public String undoGeneralPurpose(int option) {
 
         if(option == 1) {
-            return removeFromQueue(2) + "\n Undid successfully";
+            return removeFromQueue(2) + "\n Se deshizo correctamente";
         } else {
             addPatientToQueue(generalPurposeSection.getLastExit().getId(),2);
-            return "Undid successfully";
+            return "Se deshizo correctamente";
         }
 
     }
