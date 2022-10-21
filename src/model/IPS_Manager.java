@@ -43,7 +43,7 @@ public class IPS_Manager {
 
             }
             fis.close();
-            System.out.println("Base de datos cargada exitosamente");
+            System.out.println("Database loaded successfully");
             //System.out.println("Tamano del arreglo: "+paciente.size());
 
 
@@ -129,10 +129,10 @@ public class IPS_Manager {
     public String undoHematology(int option2) {
 
         if(option2 == 1) {
-            return removeFromQueue(1) + "\n Se deshizo correctamente";
+            return removeFromQueue(1) + "\n Undid successfully";
         } else {
             addPatientToQueue(hematologySection.getLastExit().getId(),1);
-            return "Se deshizo correctamente";
+            return "Undid successfully";
         }
 
     }
@@ -140,10 +140,10 @@ public class IPS_Manager {
     public String undoGeneralPurpose(int option) {
 
         if(option == 1) {
-            return removeFromQueue(2) + "\n Se deshizo correctamente";
+            return removeFromQueue(2) + "\n Undid successfully";
         } else {
             addPatientToQueue(generalPurposeSection.getLastExit().getId(),2);
-            return "Se deshizo correctamente";
+            return "Undid successfully";
         }
 
     }
