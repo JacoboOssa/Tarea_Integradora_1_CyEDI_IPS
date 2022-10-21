@@ -1,6 +1,9 @@
 import model.Implementations.Heap;
 import model.Patient;
 import org.junit.Test;
+
+import javax.swing.plaf.PanelUI;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PriorityQueueTest {
@@ -15,16 +18,16 @@ public class PriorityQueueTest {
         priorityQueue.insertElement(2,"5413187");
     }
     public void setUpStage2(){
-        priorityQueue = new Heap();
+        priorityQueue = new Heap<>();
         priorityQueue.insertElement(5,"6524245");
         priorityQueue.insertElement(1,"8329235");
         priorityQueue.insertElement(2,"7329360");
-        priorityQueue.insertElement(3,null);
+        priorityQueue.insertElement(3,"7329364");
         priorityQueue.insertElement(1,"6524245");
         priorityQueue.insertElement(5,"9863213");
     }
     public void setUpStage3(){
-        priorityQueue = new Heap();
+        priorityQueue = new Heap<>();
         priorityQueue.insertElement(5,"652489");
         priorityQueue.insertElement(5,"3203482");
         priorityQueue.insertElement(0,"183561");
@@ -41,7 +44,7 @@ public class PriorityQueueTest {
     @Test
     public void insertElementTest2(){
         setUpStage2();
-        assertEquals(null,priorityQueue.getElementA(2));
+        assertEquals("7329364",priorityQueue.getElementA(2));
     }
     @Test
     public void insertElementTest3(){
@@ -92,11 +95,37 @@ public class PriorityQueueTest {
 
     @Test
     public void increaseKeyTest2(){
-
+        setUpStage2();
+        priorityQueue.increaseKey("8329235",4);
+        assertEquals("8329235",priorityQueue.getElementA(2));
     }
 
     @Test
     public void increaseKeyTest3(){
+        setUpStage3();
+        priorityQueue.increaseKey("5203543",6);
+        assertEquals("5203543",priorityQueue.getElementA(1));
+
+    }
+
+    @Test
+    public void showMaximumTest1(){
+        setUpStage1();
+        assertEquals("7813145",priorityQueue.showMaximum());
+
+    }
+
+    @Test
+    public void showMaximumTest2(){
+        setUpStage2();
+        assertEquals("6524245",priorityQueue.showMaximum());
+
+    }
+
+    @Test
+    public void showMaximumTest3(){
+        setUpStage3();
+        assertEquals("652489",priorityQueue.showMaximum());
 
     }
 }
