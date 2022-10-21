@@ -35,6 +35,7 @@ public class Main {
                         "(3) Sacar de la cola\n"+
                         "(4) Deshacer\n" +
                         "(5) Mostrar pacientes en la Cola\n" +
+                        "(6) Mostrar pacientes en la base de Datos\n" +
                         "(0) Exit"
         );
         option= sc.nextInt();
@@ -66,6 +67,7 @@ public class Main {
                 break;
 
             case 6:
+                showPatientsInDataBase();
 
                 break;
 
@@ -138,6 +140,13 @@ public class Main {
         int option2 = Integer.parseInt(sc.nextLine());
 
         System.out.println(controller.undo(option,option2));
+    }
+
+    public void showPatientsInDataBase(){
+        System.out.println("**********PACIENTES INFO***********");
+        System.out.println("***********************************");
+        controller.showPatientsInDataBase();
+        System.out.println("***********************************");
     }
 }
 
