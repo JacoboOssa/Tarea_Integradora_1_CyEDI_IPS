@@ -55,7 +55,8 @@ public class Patient {
         this.priorityValue = priorityValue;
     }
 
-    public String printInformation() {
+    @Override
+    public String toString() {
         String information = "" +
                 "******* PACIENTE *******\n" +
                 "*   Id: " + id + "\n"+

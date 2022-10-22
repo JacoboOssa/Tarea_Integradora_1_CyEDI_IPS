@@ -99,7 +99,7 @@ public class Heap<T> implements IPriorityQueue<T>{
     public String showElements() {
         String ans = "";
         for (int i = 1; i < arr.size() ; i++) {
-            ans+= arr.get(i).getValue() + " "+ arr.get(i).getElement() + "\n";
+            ans+= arr.get(i).getValue() + " "+ arr.get(i).getElement().toString() + "\n";
         }
         return ans;
     }

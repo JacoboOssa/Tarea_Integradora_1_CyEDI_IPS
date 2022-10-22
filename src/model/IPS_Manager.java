@@ -6,7 +6,11 @@ import model.Implementations.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimerTask;
 import java.util.regex.Pattern;
+
+import java.util.Timer;
 
 
 public class IPS_Manager {
@@ -16,6 +20,8 @@ public class IPS_Manager {
     private Section hematologySection;
     private Section generalPurposeSection;
     ArrayList<Patient> paciente = new ArrayList<>();
+
+    private Timer timer = new Timer();
 
     public IPS_Manager() {
         pacientes = new ChainHashTable<>(100);
@@ -94,6 +100,7 @@ public class IPS_Manager {
     }
 
 
+
     public String removeFromQueue(int option) {
         Patient patient;
 
@@ -105,7 +112,7 @@ public class IPS_Manager {
             hematologySection.setLastExit(patient);
         }
 
-        return patient.printInformation();
+        return patient.toString();
     }
 
     public String showPatients(int option) {
@@ -175,4 +182,40 @@ public class IPS_Manager {
             throw new RuntimeException(e);
         }
     }
+
+    TimerTask tarea=new TimerTask() {
+            @Override
+            public void run() {
+                Patient patient;
+                int option = (int) Math.random()*2+1;
+                if (option == 1) {
+                    if (hematologySection.getLastAdd()!=null) {
+                        patient = hematologySection.removeFromQueue();
+                        hematologySection.setLastExit(patient);
+                        System.out.println("Se elimino el paciente: \n" + patient.toString() + "A las:" + new Date());
+                    }else {
+                        System.out.println("No hay ningun paciente encolado");
+                    }
+                } else {
+                    if (generalPurposeSection.getLastAdd()!=null) {
+                        patient = generalPurposeSection.removeFromQueue();
+                        hematologySection.setLastExit(patient);
+                        System.out.println("Se elimino el paciente: \n" + patient.toString() + "A las:" + new Date());
+                    }else {
+                        System.out.println("No hay ningun paciente encolado");
+                    }
+                }
+
+                //System.out.println(patient.printInformation());
+            }
+    };
+
+    public void deleteAutomaticPatientFromQueue(){
+        timer.schedule(tarea,0,120000);
+    }
+
+
+
+
+
 }

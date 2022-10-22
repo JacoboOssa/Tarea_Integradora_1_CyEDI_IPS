@@ -36,6 +36,7 @@ public class Main {
                         "(4) Deshacer\n" +
                         "(5) Mostrar pacientes en la Cola\n" +
                         "(6) Mostrar pacientes en la base de Datos\n" +
+                        "(7) Eliminar Automaticamente de la Cola\n" +
                         "(0) Exit"
         );
         option= sc.nextInt();
@@ -54,6 +55,7 @@ public class Main {
                 searchPatientInDateBase();
                 break;
             case 2:
+                startSystemIPS();
                 addToQueue();
                 break;
             case 3:
@@ -68,8 +70,11 @@ public class Main {
 
             case 6:
                 showPatientsInDataBase();
-
                 break;
+            case 7:
+                deletePatientForQueueAutomatic();
+                break;
+
 
             default:
                 System.out.println("Error, opcion invalilda");
@@ -147,6 +152,10 @@ public class Main {
         System.out.println("***********************************");
         controller.showPatientsInDataBase();
         System.out.println("***********************************");
+    }
+
+    public void deletePatientForQueueAutomatic(){
+        controller.deleteAutomaticPatientFromQueue();
     }
 }
 
