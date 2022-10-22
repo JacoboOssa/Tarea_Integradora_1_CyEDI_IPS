@@ -187,22 +187,26 @@ public class IPS_Manager {
             @Override
             public void run() {
                 Patient patient;
-                int option = (int) Math.random()*2+1;
+                int option = (int) Math.random()*3+1;
                 if (option == 1) {
-                    if (hematologySection.getLastAdd()!=null) {
-                        patient = hematologySection.removeFromQueue();
-                        hematologySection.setLastExit(patient);
-                        System.out.println("Se elimino el paciente: \n" + patient.toString() + "A las:" + new Date());
-                    }else {
-                        System.out.println("No hay ningun paciente encolado");
+                    if (hematologySection!=null) {
+                        if (hematologySection.getLastAdd() != null) {
+                            patient = hematologySection.removeFromQueue();
+                            hematologySection.setLastExit(patient);
+                            System.out.println("Se elimino el paciente: \n" + patient.toString() + "A las:" + new Date());
+                        } else {
+                            System.out.println("No hay ningun paciente encolado");
+                        }
                     }
-                } else {
-                    if (generalPurposeSection.getLastAdd()!=null) {
-                        patient = generalPurposeSection.removeFromQueue();
-                        hematologySection.setLastExit(patient);
-                        System.out.println("Se elimino el paciente: \n" + patient.toString() + "A las:" + new Date());
-                    }else {
-                        System.out.println("No hay ningun paciente encolado");
+                }else {
+                    if (generalPurposeSection!=null) {
+                        if (generalPurposeSection.getLastAdd() != null) {
+                            patient = generalPurposeSection.removeFromQueue();
+                            hematologySection.setLastExit(patient);
+                            System.out.println("Se elimino el paciente: \n" + patient.toString() + "A las:" + new Date());
+                        } else {
+                            System.out.println("No hay ningun paciente encolado");
+                        }
                     }
                 }
 
