@@ -24,7 +24,7 @@ public class ChainHashTable <K,V>  implements IHashTable<K,V>{
         } else {
             while (nodeInList != null) {
                 if(nodeInList.getKey().equals(key)) {
-                    break;
+                   return;
                 }
                 nodeInList = nodeInList.getNext();
             }
